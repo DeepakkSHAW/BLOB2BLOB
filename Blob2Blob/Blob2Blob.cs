@@ -32,7 +32,7 @@ namespace Blob2Blob
             string vReturn = string.Empty;
             returnDiv = "";
             returnJag = "";
-            log.LogInformation($"File recived in Inbound Blob\n Name:{name} \n Size: {inboundBlob.Length} Bytes");
+            log.LogInformation($"File received in Inbound Blob\n Name:{name} \n Size: {inboundBlob.Length} Bytes");
             try
             {
                 StreamReader reader = new StreamReader(inboundBlob);
@@ -45,22 +45,21 @@ namespace Blob2Blob
                 }
                 else if (readSecondBlob.Contains("JAG", comparisonType: StringComparison.OrdinalIgnoreCase))
                 {
-                    returnJag = "Jags:" +Environment.OSVersion +
+                    returnJag = "Jags:" + Environment.OSVersion +
                                 Environment.NewLine + readSecondBlob;
                 }
                 else
                 {
-                    returnDiv = $"Machine: {Environment.MachineName} deosn't have value for Div";  
-                    returnJag = $"Current Directory: {Environment.CurrentDirectory} deosn't have value for Jag";
+                    returnDiv = $"Machine: {Environment.MachineName} doesn't have value for Div";
+                    returnJag = $"Current Directory: {Environment.CurrentDirectory} doesn't have value for Jag";
                 }
+                return vReturn;
             }
             catch (Exception ex)
             {
-                vReturn = $"Process has error [{ex.Message}].{Environment.NewLine}Completed unsuccessfully..";
                 log.LogError($"Exception:{ex.Message}");
+                throw;
             }
-            return vReturn;
-
         }
     }
 }
