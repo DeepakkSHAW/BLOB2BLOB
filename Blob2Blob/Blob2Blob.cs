@@ -6,6 +6,18 @@ using Microsoft.Extensions.Logging;
 
 namespace Blob2Blob
 {
+    /*
+     //Configuration//
+     {
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
+    "Blob2Blob_In": "blob2blob-in",
+    "Blob2Blob_Out": "blob2blob-out"
+  }
+}
+         */
     public static class Blob2Blob
     {
         [FunctionName("BlobToBlob")]
